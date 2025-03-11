@@ -11,7 +11,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private Button btna1, btna2, btna3, btna4;
     private TextView tvQuestion;
     private TextView tvQuestionNumber, tvPoints, tvGameOver;
-    private Collection collection;
+    private Collection2 collection;
     private Question q;
     private int points = 0;
 
@@ -37,7 +37,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         tvGameOver.setVisibility(View.INVISIBLE);
 
-        collection = new Collection();
+        collection = new Collection2();
         collection.initQuestion();
 
         nextQuestion();
@@ -51,9 +51,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
             tvQuestion.setText(q.getQuestion());
             btna1.setText(q.getA1());
-            btna2.setText(q.getA1());
-            btna3.setText(q.getA1());
-            btna4.setText(q.getA1());
+            btna2.setText(q.getA2());
+            btna3.setText(q.getA3());
+            btna4.setText(q.getA4());
         }
         else
         {
@@ -63,7 +63,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void createDialog() {
-
+        CustomDialog customDialog = new CustomDialog(this);
+        customDialog.show();
     }
 
     @Override
@@ -100,5 +101,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         nextQuestion();
+    }
+
+    public void reset() {
+        this.points = 0;
+        collection.initQuestion();
+        tvPoints.setText("Points: " + 0);
+        tvQuestionNumber.setText("Question number: " + 1);
+        tvGameOver.setVisibility(View.INVISIBLE);
+        this.nextQuestion();
     }
 }
