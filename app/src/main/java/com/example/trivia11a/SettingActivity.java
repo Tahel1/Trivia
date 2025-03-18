@@ -1,15 +1,18 @@
 package com.example.trivia11a;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -17,7 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class SettingActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private Spinner spinner;
     private Button btnColorSetting;
-    private String[] arrColor = { "Red", "Blue", "Pink", "Yellow"};
+    private String[] arrColor = {"Red", "Blue", "Pink", "Yellow"};
     private String chooseColor;
 
     @Override
@@ -32,7 +35,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         spinner.setOnItemSelectedListener(this);
 
         ArrayAdapter aa =
-                new ArrayAdapter(this, android.R.layout.simple_spinner_item,arrColor);
+                new ArrayAdapter(this, android.R.layout.simple_spinner_item, arrColor);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(aa);
 
@@ -42,7 +45,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         Intent i = new Intent();
         i.putExtra("color", chooseColor);
-        setResult(RESULT_OK,i);
+        setResult(RESULT_OK, i);
         finish();  // close the activity
     }
 

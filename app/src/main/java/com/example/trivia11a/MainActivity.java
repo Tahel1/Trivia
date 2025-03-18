@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> resultLauncher;
     private FbModule fbModule;
     private ConstraintLayout ll;
+    private String bgColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickStart(View view) {
         Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra("color", bgColor);
         startActivity(intent);
     }
 
@@ -64,12 +66,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickInstruction(View view) {
+        Intent intent = new Intent(this, InstructionsActivity.class);
+        startActivity(intent);
     }
 
     public void setNewColorFromFb(String str) {
         //הפיירבייס קורא ללפעולה בפעם הראשונה ואחרי כל פעם שהמשתמש משנה את הצבע
         Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
         setBackgroundColor(str);
+        bgColor = str;
 
     }
 
